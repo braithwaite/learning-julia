@@ -1,9 +1,7 @@
 [Julia](http://www.julialang.org) is a programming language for scientific computing.
 It might be characterized in many ways.
 From my perspective, it is an open-source alternative to MATLAB, with greater capabilities for general purpose programming.
-
 I'm learning Julia in conjunction with thesis work in numerical analysis and numerical linear algebra in particular.
-
 Some learning resources:  
 
 + docs:  <http://docs.julialang.org/>
