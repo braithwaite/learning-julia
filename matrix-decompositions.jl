@@ -1,6 +1,6 @@
-# LU decomposition without pivoting
+# LU decomposition (without pivoting)
 
-n=6
+n = 6
 M = rand(n,n)
 L = zeros(n,n)
 U = zeros(n,n)
@@ -21,10 +21,13 @@ U [n,n] = A [n,n]
 
 
 # Cholesky decomposition
+# applies only to a symmetric real matrix with positive leading minors
+# equiv: matrix of the form M M' where diag(M) > 0
 
-n=6
+n = 6
 M = rand(n,n)
-M = M + M'			# applies only to a symmetric real matrix !! with positive leading minors
+for i in 2:n	M[i-1,i:n] = 0	end
+M = M * M'
 
 C = zeros(n,n)
 for i in 1:n
@@ -40,3 +43,19 @@ for i in 1:n
 C
 
 
+# QR / Gram Schmidt
+
+n = 8
+r = 4
+M = rand(n,r)
+Q = zeros(n,r)
+R = zeros(r,r)
+for i in 1:r
+  s = 0
+  for j in 1:(i-1)
+	R [j,i] = dot (Q [1:n,j], M [1:n,i])
+    s = s + R [j,i] * Q [1:n,j]
+    end
+  R [i,i] = norm (M [1:n,i] - s)
+  Q [1:n,i] = (M [1:n,i] - s) / R [i,i]
+  end
